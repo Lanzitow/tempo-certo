@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Tempo Certo{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <header class="topo">
+    <a class="logo" href="{{ url_for('index') }}">Tempo Certo</a>
+    {% if session.usuario_id %}
+    <nav>
+      <a href="{{ url_for('inicio') }}">Consultar</a>
+      <a href="{{ url_for('relatorio') }}">Relatório</a>
+      <a href="{{ url_for('sair') }}">Sair</a>
+    </nav>
+    {% endif %}
+  </header>
+
+  <main class="conteudo">
+    {% for categoria, msg in get_flashed_messages(with_categories=true) %}
+      <p class="aviso aviso-{{ categoria }}">{{ msg }}</p>
+    {% endfor %}
+    {% block corpo %}{% endblock %}
+  </main>
+
+  <footer class="rodape">Projeto N2 · dados: Open-Meteo</footer>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

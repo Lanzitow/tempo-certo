@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block titulo %}Relatório · Tempo Certo{% endblock %}
+{% block corpo %}
+<div class="cabecalho-relatorio">
+  <div>
+    <h1>Relatório de consultas</h1>
+    <p class="sub">Usuário: {{ session.usuario_nome }} · Emitido em {{ emitido }}</p>
+  </div>
+  <button type="button" id="btn-imprimir" class="nao-imprimir">Imprimir</button>
+</div>
+
+{% if consultas %}
+<div class="tabela-rolagem">
+<table>
+  <thead>
+    <tr><th>Data</th><th>Cidade</th><th>Temp.</th><th>Umidade</th><th>Vento</th><th>Condição</th></tr>
+  </thead>
+  <tbody>
+    {% for c in consultas %}
+    <tr>
+      <td>{{ c.data_hora }}</td>
+      <td>{{ c.cidade }}{% if c.pais %} ({{ c.pais }}){% endif %}</td>
+      <td>{{ c.temperatura }}°C</td>
+      <td>{{ c.umidade }}%</td>
+      <td>{{ c.vento }} km/h</td>
+      <td>{{ c.condicao }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+<p class="resumo">{{ consultas|length }} consulta(s) · temperatura média: {{ "%.1f"|format(media) }}°C</p>
+{% else %}
+<p class="vazio">Você ainda não fez nenhuma consulta. <a href="{{ url_for('inicio') }}">Fazer a primeira</a></p>
+{% endif %}
+{% endblock %}

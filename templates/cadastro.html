@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block titulo %}Cadastro · Tempo Certo{% endblock %}
+{% block corpo %}
+<section class="cartao cartao-estreito">
+  <h1>Criar conta</h1>
+  <form method="post" id="form-cadastro">
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" name="nome" required>
+    <label for="email">E-mail</label>
+    <input type="email" id="email" name="email" required>
+    <label for="senha">Senha (mín. 6 caracteres)</label>
+    <input type="password" id="senha" name="senha" minlength="6" required>
+    <label for="confirmar">Confirmar senha</label>
+    <input type="password" id="confirmar" required>
+    <button type="submit">Cadastrar</button>
+  </form>
+  <p class="troca">Já tem conta? <a href="{{ url_for('login') }}">Entrar</a></p>
+</section>
+{% endblock %}

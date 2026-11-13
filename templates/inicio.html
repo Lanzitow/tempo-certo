@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block titulo %}Consultar · Tempo Certo{% endblock %}
+{% block corpo %}
+<section class="hero">
+  <h1>Olá, {{ session.usuario_nome }}</h1>
+  <p class="sub">Qual cidade você quer consultar agora?</p>
+  <form method="post" class="busca">
+    <input type="text" name="cidade" placeholder="Ex: Sorocaba" required>
+    <button type="submit">Consultar</button>
+  </form>
+</section>
+
+{% if resultado %}
+<section class="cartao resultado">
+  <div>
+    <h2 class="resultado-cidade">{{ resultado.cidade }}{% if resultado.pais %}, {{ resultado.pais }}{% endif %}</h2>
+    <p class="temp">{{ resultado.temperatura }}°C</p>
+    <p class="resultado-condicao">{{ resultado.condicao }}</p>
+  </div>
+  <ul class="dados">
+    <li>Umidade <strong>{{ resultado.umidade }}%</strong></li>
+    <li>Vento <strong>{{ resultado.vento }} km/h</strong></li>
+  </ul>
+</section>
+{% endif %}
+
+{% if recentes %}
+<section class="recentes">
+  <h2>Consultas recentes</h2>
+  <ul class="lista-recentes">
+    {% for c in recentes %}
+    <li>
+      <div>
+        {{ c.cidade }}
+        <small>{{ c.data_hora }} · {{ c.condicao }}</small>
+      </div>
+      <span class="grau">{{ c.temperatura }}°C</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+{% endblock %}

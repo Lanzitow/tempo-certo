@@ -1,0 +1,25 @@
+:root {
+  --cor-fundo: #f3eee4;
+  --cor-texto: #24302c;
+  --cor-primaria: #1f5f5b;
+  --cor-primaria-escura: #154542;
+  --cor-destaque: #d9822b;
+  --cor-destaque-escura: #b8701f;
+  --cor-neutra: #d8d1c2;
+  --cor-ok: #2e7d4f;
+  --cor-erro: #b3392f;
+
+  --fonte-titulo: Georgia, "Times New Roman", serif;
+  --fonte-corpo: "Segoe UI", Tahoma, Arial, sans-serif;
+  --texto-pequeno: 0.85rem;
+  --texto-base: 1rem;
+  --texto-medio: 1.25rem;
+  --texto-grande: 1.75rem;
+  --texto-enorme: 3.5rem;
+
+  --esp-1: 4px; --esp-2: 8px; --esp-3: 16px;
+  --esp-4: 24px; --esp-5: 32px; --esp-6: 48px;
+
+  --raio: 8px;
+  --sombra: 0 2px 8px rgba(36, 48, 44, 0.12);
+}
